@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".HouseProfile"
+        android:background="@color/lightGray"
+
+        >
+
+        <ImageView
+            android:id="@+id/houseProfileImage"
+            android:layout_width="match_parent"
+            android:layout_height="350sp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/house_foreground" />
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:layout_alignParentTop="true"
+            android:layout_margin="10sp"
+            android:background="@null"
+            android:onClick="onClickButton"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_back_foreground"
+            android:tint="@color/white" />
+
+        <LinearLayout
+            android:id="@+id/profileText"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/houseProfileImage"
+            android:layout_marginTop="-30sp"
+            android:background="@drawable/roundedprofile"
+            android:orientation="vertical"
+            android:padding="25sp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10sp">
+
+                <TextView
+                    android:id="@+id/priceProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="$45,000"
+                    android:textColor="@color/Strong"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+
+                    />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_toRightOf="@+id/priceProfile">
+                    <!--        Beds icon + number-->
+
+                    <ImageView
+                        android:id="@+id/bedsIconIv"
+                        android:layout_width="16sp"
+                        android:layout_height="16sp"
+                        android:layout_marginLeft="30sp"
+                        android:layout_marginRight="3sp"
+                        android:src="@drawable/ic_bed" />
+
+                    <TextView
+                        android:id="@+id/bedsTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_toRightOf="@+id/bedsIconIv"
+                        android:text="1"
+                        android:textColor="@color/Medium"
+                        android:textSize="11sp"
+
+                        />
+
+                    <!--        baths icon + number-->
+
+                    <ImageView
+                        android:id="@+id/bathsIconIv"
+                        android:layout_width="16sp"
+                        android:layout_height="16sp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="1sp"
+                        android:layout_marginRight="3dp"
+                        android:layout_toRightOf="@+id/bedsTv"
+                        android:src="@drawable/ic_bath" />
+
+                    <TextView
+                        android:id="@+id/bathsTv"
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_toRightOf="@+id/bathsIconIv"
+                        android:text="1"
+                        android:textColor="@color/Medium"
+                        android:textSize="11sp"
+
+                        />
+
+
+                    <!--        images icon + number-->
+
+                    <ImageView
+                        android:id="@+id/imageIconIv"
+                        android:layout_width="16sp"
+                        android:layout_height="16sp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="1sp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toRightOf="@+id/bathsTv"
+                        android:src="@drawable/ic_layers" />
+
+                    <TextView
+                        android:id="@+id/imageNumbTv"
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_toRightOf="@+id/imageIconIv"
+                        android:text="46"
+                        android:textColor="@color/Medium"
+                        android:textSize="11sp"
+
+                        />
+
+
+                    <!--        distance icon + number-->
+
+                    <ImageView
+                        android:id="@+id/distanceIconIv"
+                        android:layout_width="16sp"
+                        android:layout_height="16sp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="1sp"
+                        android:layout_marginRight="5dp"
+                        android:layout_toRightOf="@+id/imageNumbTv"
+                        android:src="@drawable/ic_location" />
+
+                    <TextView
+                        android:id="@+id/distanceTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_toRightOf="@+id/distanceIconIv"
+                        android:text="54.6km"
+                        android:textColor="@color/Medium"
+                        android:textSize="11sp"
+
+                        />
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:text="Description"
+                android:textColor="@color/Strong"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:text="This is a house \n and many people like it \n cus its
+                a cool house \n and so people should buy it cheers"
+                android:textColor="@color/Medium"
+                android:textSize="15sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/locationTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:text="Location"
+                android:textColor="@color/Strong"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <fragment
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:map="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="300sp"
+                android:layout_below="@+id/locationTitle"
+                />
+
+        </LinearLayout>
+
+
+
+
+    </RelativeLayout>
+
+</ScrollView>
