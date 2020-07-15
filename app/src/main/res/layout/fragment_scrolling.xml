@@ -22,11 +22,10 @@
             android:background="@drawable/round_outline"
             android:backgroundTint="@color/Light"
             android:theme="@style/SearchViewStyle"
-            app:iconifiedByDefault="false"
+            app:iconifiedByDefault="true"
             app:queryBackground="@null"
+            app:defaultQueryHint="Search here"
             app:queryHint="Search here"
-            app:searchIcon="@drawable/ic_search_foreground"
-            app:searchHintIcon="@drawable/ic_search_foreground"
             app:closeIcon="@drawable/ic_close"/>
 
 

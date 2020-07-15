@@ -63,7 +63,7 @@ class HousesScreen : AppCompatActivity(){
 
     @SuppressLint("MissingPermission")
     fun getCurrentLocation(fragment: ScrollingFragment) {
-        val l: LocationRequest = LocationRequest()
+        val l= LocationRequest()
         l.interval = 10000
         l.fastestInterval = 3000
         val fusedLocationCLient = LocationServices.getFusedLocationProviderClient(this)
@@ -93,11 +93,11 @@ class HousesScreen : AppCompatActivity(){
         toolbar.setTitleTextColor(myColor)
         setSupportActionBar(toolbar)
 
-        val fragment1: Fragment = ScrollingFragment(this)
+        val fragment1: Fragment = ScrollingFragment()
         val fragment2 : Fragment = AboutFragment()
         val fm: FragmentManager = supportFragmentManager
         fm.beginTransaction().add(R.id.main_container, fragment2, "2").hide(fragment2).commit()
-        fm.beginTransaction().add(R.id.main_container,fragment1, "1").commit();
+        fm.beginTransaction().add(R.id.main_container,fragment1, "1").commit()
 
         bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {

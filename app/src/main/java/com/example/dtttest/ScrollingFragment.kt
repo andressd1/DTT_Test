@@ -1,35 +1,23 @@
 package com.example.dtttest
 
-import android.content.Context
-import android.location.Location
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_scrolling.*
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.math.roundToInt
 
-class ScrollingFragment(context: Context) : Fragment() {
 
-    var longitude: Double = 0.0
-    var latitude: Double = 0.0
+class ScrollingFragment() : Fragment() {
+
     var currentFragment = 1
     val arrayList = ArrayList<Model>()
     lateinit var recycleFragment: RecycleFragment
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,13 +37,13 @@ class ScrollingFragment(context: Context) : Fragment() {
         val fragment2 : Fragment = NoResultFragment()
         val childFragmentManager : FragmentManager = childFragmentManager
         childFragmentManager.beginTransaction().add(R.id.search_container, fragment2, "2").hide(fragment2).commit()
-        childFragmentManager.beginTransaction().add(R.id.search_container,fragment1, "1").commit();
+        childFragmentManager.beginTransaction().add(R.id.search_container,fragment1, "1").commit()
 
         for (x in 0 until 4) {
             arrayList.add(
                 Model(
                     houseImage = R.drawable.house,
-                    price = "9999",
+                    price = 9999,
                     address = "Balloon Street",
                     bedNumb = "4",
                     bathNumb = "4",
@@ -68,7 +56,7 @@ class ScrollingFragment(context: Context) : Fragment() {
             arrayList.add(
                 Model(
                     houseImage = R.drawable.house,
-                    price = "5000",
+                    price = 5000,
                     address = "Calle Abrego",
                     bedNumb = "5",
                     bathNumb = "7",
@@ -82,7 +70,7 @@ class ScrollingFragment(context: Context) : Fragment() {
             arrayList.add(
                 Model(
                     houseImage = R.drawable.house,
-                    price = "45000",
+                    price = 45000,
                     address = "Baker Street",
                     bedNumb = "3",
                     bathNumb = "2",
