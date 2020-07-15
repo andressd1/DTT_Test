@@ -31,10 +31,7 @@
             android:value="@string/google_maps_key" />
 
 
-        <activity
-            android:name=".About"
-            android:noHistory="true"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+
         <activity
             android:name=".HouseProfile"
             android:parentActivityName=".HousesScreen"

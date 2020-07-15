@@ -7,19 +7,15 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
-import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.view.children
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
 import kotlinx.android.synthetic.main.activity_houses_screen.*
-import kotlin.math.roundToInt
 
 
 class HousesScreen : AppCompatActivity(){
@@ -29,10 +25,9 @@ class HousesScreen : AppCompatActivity(){
     private var REQUEST_CODE_LOCATION_PERMISSION = 1
     var longitude : Double = 0.0
     var latitude : Double = 0.0
-    val arrayList = ArrayList<Model>()
-    lateinit var myAdapter : MyAdapter
+    lateinit var fragment : ScrollingFragment
 
-    fun requestPermission(adapter: MyAdapter) {
+     fun requestPermission(fragment: ScrollingFragment) {
         if (ContextCompat.checkSelfPermission(
                 this@HousesScreen,
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -45,7 +40,7 @@ class HousesScreen : AppCompatActivity(){
                 1
             )
         } else {
-            getCurrentLocation(adapter)
+            getCurrentLocation(fragment)
         }
     }
 
@@ -58,7 +53,7 @@ class HousesScreen : AppCompatActivity(){
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_CODE_LOCATION_PERMISSION && grantResults.size > 0) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                getCurrentLocation(myAdapter)
+                getCurrentLocation(fragment)
             } else {
                 Toast.makeText(this, "Location permission denied", Toast.LENGTH_LONG).show()
                 permissionDenied = true
@@ -67,7 +62,7 @@ class HousesScreen : AppCompatActivity(){
     }
 
     @SuppressLint("MissingPermission")
-    fun getCurrentLocation(adapter: MyAdapter) {
+    fun getCurrentLocation(fragment: ScrollingFragment) {
         val l: LocationRequest = LocationRequest()
         l.interval = 10000
         l.fastestInterval = 3000
@@ -79,12 +74,7 @@ class HousesScreen : AppCompatActivity(){
                     gotLocation = true
                     longitude = location.longitude
                     latitude = location.latitude
-                    for(x in 0 until arrayList.size){
-                        var f =  floatArrayOf(1f)
-                        Location.distanceBetween(latitude, longitude, arrayList[x].latitude, arrayList[x].longtitude, f)
-                        arrayList[x].distNumb = (f[0]).roundToInt().toFloat()/1000
-                        adapter.notifyItemChanged(x)
-                    }
+                    fragment.gotUserLocation(longitude, latitude)
                 }
                 else{
                     gotLocation = false
@@ -98,80 +88,17 @@ class HousesScreen : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_houses_screen)
 
-
-        for (x in 0 until 4) {
-            arrayList.add(
-                Model(
-                    houseImage = R.drawable.house,
-                    price = "9999",
-                    address = "Balloon Street",
-                    bedNumb = "4",
-                    bathNumb = "4",
-                    imagesNumb = "44",
-                    distNumb = 0f,
-                    latitude = 40.0,
-                    longtitude = -4.0
-                )
-            )
-            arrayList.add(
-                Model(
-                    houseImage = R.drawable.house,
-                    price = "5000",
-                    address = "Calle Abrego",
-                    bedNumb = "5",
-                    bathNumb = "7",
-                    imagesNumb = "17",
-                    distNumb = 0f,
-                    latitude = 40.0,
-                    longtitude = -4.0
-                )
-            )
-
-            arrayList.add(
-                Model(
-                    houseImage = R.drawable.house,
-                    price = "45000",
-                    address = "Baker Street",
-                    bedNumb = "3",
-                    bathNumb = "2",
-                    imagesNumb = "14",
-                    distNumb = 0f,
-                    latitude = 40.0,
-                    longtitude = -4.0
-                )
-            )
-        }
-        arrayList.sortWith( compareBy {it.price})
-        
         val myColor = ContextCompat.getColor(this, R.color.Strong)
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
         toolbar.title = "DTT REAL ESTATE"
         toolbar.setTitleTextColor(myColor)
         setSupportActionBar(toolbar)
 
-        val obj = object : SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
-            }
+        val fragment1: Fragment = ScrollingFragment(this)
+        val fragment2 : Fragment = AboutFragment()
+        val fm: FragmentManager = supportFragmentManager
+        fm.beginTransaction().add(R.id.main_container, fragment2, "2").hide(fragment2).commit()
+        fm.beginTransaction().add(R.id.main_container,fragment1, "1").commit();
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-
-                myAdapter.filter.filter(newText)
-                return false
-            }
-
-
-        }
-
-        houseSearch.setOnQueryTextListener(obj)
-
-
-        myAdapter = MyAdapter(arrayList, this)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = myAdapter
-        requestPermission(myAdapter)
-
-        bottomNavigation.menu.findItem(R.id.action_home).isChecked = true
         bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
 
@@ -180,20 +107,20 @@ class HousesScreen : AppCompatActivity(){
                 }
 
                 R.id.action_home -> {
-                    val intent = Intent(this, HousesScreen::class.java)
-                    startActivity(intent)
+                    toolbar.setTitle("DTT REAL ESTATE")
+                    fm.beginTransaction().hide(fragment2).show(fragment1).commit()
                     true
                 }
                 R.id.action_about -> {
-
-                    val intent = Intent(this, About::class.java)
-                    startActivity(intent)
-                    false
+                    toolbar.setTitle("ABOUT")
+                    fm.beginTransaction().hide(fragment1).show(fragment2).commit()
+                    true
 
                 }
                 else -> false
             }
         }
-
+        fragment = fragment1 as ScrollingFragment
+        requestPermission(fragment)
     }
 }

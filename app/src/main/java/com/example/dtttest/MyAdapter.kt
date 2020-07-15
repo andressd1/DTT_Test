@@ -14,11 +14,11 @@ import kotlinx.android.synthetic.main.row.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
-class MyAdapter( val arrayList: ArrayList<Model>, val context: Context) :
-    RecyclerView.Adapter<MyAdapter.ViewHolder>(), Filterable {
+class MyAdapter( val arrayList: ArrayList<Model>) :
+    RecyclerView.Adapter<MyAdapter.ViewHolder>() {
 
     var filteredList = ArrayList<Model>()
-
+    lateinit var context : Context
     init {
         filteredList = arrayList
     }
@@ -41,6 +41,7 @@ class MyAdapter( val arrayList: ArrayList<Model>, val context: Context) :
      }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        context = parent.context
         val v = LayoutInflater.from(parent.context).inflate(R.layout.row, parent, false)
 
         return ViewHolder(v)
@@ -61,34 +62,9 @@ class MyAdapter( val arrayList: ArrayList<Model>, val context: Context) :
         }
     }
 
-    override fun getFilter(): Filter {
-        return object : Filter(){
-            override fun performFiltering(charSearch: CharSequence?): FilterResults {
-                val search = charSearch.toString()
-
-                if(search.isEmpty()){
-                    filteredList = arrayList
-                }
-                else{
-                    var resultList = ArrayList<Model>()
-
-                    for(model in arrayList){
-                        if(model.address.toLowerCase(Locale.ROOT).contains(search.toLowerCase(Locale.ROOT))) {
-                            resultList.add(model)
-                        }
-                    }
-                    filteredList = resultList
-                }
-                val filterResults = FilterResults()
-                filterResults.values = filteredList
-                return filterResults
-            }
-
-            override fun publishResults(p0: CharSequence?, results: FilterResults?) {
-                filteredList = results?.values as ArrayList<Model>
-                notifyDataSetChanged()
-            }
-        }
+    fun filteredResults(filteredResults : ArrayList<Model>){
+        filteredList = filteredResults
+        notifyDataSetChanged()
     }
 
 

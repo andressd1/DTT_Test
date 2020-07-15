@@ -5,10 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".AboutFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/aboutText"
+        android:textColor="@color/Strong"
+        android:background="@color/lightGray"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="TALK ABOUT APP STUFF"/>
 
 </FrameLayout>

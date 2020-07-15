@@ -20,46 +20,13 @@
         app:popupTheme="@style/AppTheme" />
 
 
-    <LinearLayout
-        android:id="@+id/fragContainer"
+    <include
+        layout="@layout/content_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottomNavigation"
         android:layout_below="@+id/toolbar"
-        android:orientation="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/houseSearch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20sp"
-            android:layout_marginBottom="10sp"
-            android:background="@drawable/round_outline"
-            android:backgroundTint="@color/Light"
-            android:theme="@style/SearchViewStyle"
-            app:iconifiedByDefault="false"
-            app:queryBackground="@null"
-            app:queryHint="Search here"
-            app:searchIcon="@drawable/ic_search_foreground"
-            app:searchHintIcon="@drawable/ic_search_foreground"
-            app:closeIcon="@drawable/ic_close"/>
-
-        <include
-            layout="@layout/content_main"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/navigation"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
+        android:layout_above="@+id/bottomNavigation"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
