@@ -35,19 +35,8 @@ class RecycleFragment(var arrayList: ArrayList<Model>) : Fragment() {
         myAdapter.filteredResults(f)
     }
 
-    fun gotUserLocation(longitude : Double, latitude : Double){
-        for (x in 0 until arrayList.size) {
-            var f = floatArrayOf(1f)
-            Location.distanceBetween(
-                latitude,
-                longitude,
-                arrayList[x].latitude,
-                arrayList[x].longtitude,
-                f
-            )
-            arrayList[x].distNumb = (f[0]).roundToInt().toFloat() / 1000
-            myAdapter.notifyItemChanged(x)
-        }
+    fun gotUserLocation(){
+        myAdapter.notifyDataSetChanged()
     }
 
 }
