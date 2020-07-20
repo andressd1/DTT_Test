@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import kotlinx.android.synthetic.main.fragment_scrolling.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -15,8 +17,8 @@ import kotlin.collections.ArrayList
 class ScrollingFragment() : Fragment() {
 
     var currentFragment = 1
-    val housesData = HousesData()
     lateinit var recycleFragment: RecycleFragment
+    val viewModel: RecycleFragViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,13 +31,15 @@ class ScrollingFragment() : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val fragment1: Fragment = RecycleFragment(housesData.housesList)
+        val fragment1: Fragment = RecycleFragment(viewModel.houseData)
         recycleFragment = fragment1 as RecycleFragment
         val fragment2 : Fragment = NoResultFragment()
         val childFragmentManager : FragmentManager = childFragmentManager
         childFragmentManager.beginTransaction().add(R.id.search_container, fragment2, "2").hide(fragment2).commit()
         childFragmentManager.beginTransaction().add(R.id.search_container,fragment1, "1").commit()
-
+        viewModel.responseLiveData.observe(viewLifecycleOwner){
+            recycleFragment.gotHouses()
+        }
 
         val obj = object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -45,7 +49,7 @@ class ScrollingFragment() : Fragment() {
             override fun onQueryTextChange(newText: String?): Boolean {
 
                 if (newText != null) {
-                    val filteredList = housesData.filterHouses(newText.toString().toLowerCase(Locale.ROOT))
+                    val filteredList = viewModel.filterHouses(newText)
 
                     if(filteredList.size < 1){
                         childFragmentManager.beginTransaction().show(fragment2).hide(fragment1).commit()
@@ -66,8 +70,7 @@ class ScrollingFragment() : Fragment() {
     }
 
     fun gotUserLocation(lo: Double, la: Double) {
-        housesData.updateLocation(lo,la)
+        viewModel.updateLocation(lo,la)
         recycleFragment.gotUserLocation()
     }
-
 }

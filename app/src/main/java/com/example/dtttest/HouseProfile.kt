@@ -26,20 +26,19 @@ class HouseProfile : AppCompatActivity(), OnMapReadyCallback {
         setContentView(R.layout.activity_house_profile)
 
         val i = intent
-        val model: Model = i.getSerializableExtra("houseModel") as Model
+        val item: HouseItem = i.getSerializableExtra("houseItem") as HouseItem
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        houseProfileImage.setImageResource(model.houseImage)
-        priceProfile.text = "$" + model.price
-        bedsTv.text = model.bedNumb
-        bathsTv.text = model.bathNumb
-        imageNumbTv.text = model.imagesNumb
-        distanceTv.text = "${model.distNumb} km"
-        longtitude = model.longtitude
-        latitude = model.latitude
+        priceProfile.text = "$" + item.price.toString()
+        bedsTv.text = item.bedrooms.toString()
+        bathsTv.text = item.bathrooms.toString()
+        imageNumbTv.text = item.size.toString()
+        distanceTv.text = "${item.distance} km"
+        longtitude = item.longitude.toDouble()
+        latitude = item.latitude.toDouble()
     }
 
     fun onClickButton(view: View) {

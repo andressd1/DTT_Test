@@ -2,22 +2,18 @@ package com.example.dtttest
 
 import android.content.Context
 import android.content.Intent
-import android.view.Display
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.row.view.*
-import java.util.*
 import kotlin.collections.ArrayList
 
-class MyAdapter( val arrayList: ArrayList<Model>) :
+class MyAdapter( arrayList: ArrayList<HouseItem>) :
     RecyclerView.Adapter<MyAdapter.ViewHolder>() {
 
-    var filteredList = ArrayList<Model>()
+    var filteredList = ArrayList<HouseItem>()
     lateinit var context : Context
     init {
         filteredList = arrayList
@@ -27,16 +23,14 @@ class MyAdapter( val arrayList: ArrayList<Model>) :
      class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
 
-         fun bindItem(model: Model) {
-             itemView.houseImageIv.setImageResource(model.houseImage)
+         fun bindItem(item: HouseItem) {
              itemView.houseImageIv.clipToOutline = true
-             itemView.priceTv.text = "$"+model.price
-             itemView.addressTv.text = model.address
-             itemView.bedsTv.text = model.bedNumb
-             itemView.bathsTv.text = model.bathNumb
-             itemView.imageNumbTv.text = model.imagesNumb
-             itemView.distanceTv.text = "${model.distNumb} km"
-
+             itemView.priceTv.text = "$"+item.price
+             itemView.addressTv.text = item.city + " " + item.zip
+             itemView.bedsTv.text = item.bedrooms.toString()
+             itemView.bathsTv.text = item.bathrooms.toString()
+             itemView.imageNumbTv.text = item.size.toString()
+             itemView.distanceTv.text = "${item.distance} km"
          }
      }
 
@@ -55,14 +49,14 @@ class MyAdapter( val arrayList: ArrayList<Model>) :
         holder.bindItem(filteredList[position])
 
         holder.itemView.setOnClickListener {
-            val EXTRA_MESSAGE = "houseModel"
-            val m : Model = filteredList[position]
-            val intent = Intent(context, HouseProfile::class.java).apply { putExtra(EXTRA_MESSAGE, m) }
+            val EXTRA_MESSAGE = "houseItem"
+            val item : HouseItem = filteredList[position]
+            val intent = Intent(context, HouseProfile::class.java).apply { putExtra(EXTRA_MESSAGE, item) }
             startActivity(context, intent, null)
         }
     }
 
-    fun filteredResults(filteredResults : ArrayList<Model>){
+    fun filteredResults(filteredResults : ArrayList<HouseItem>){
         filteredList = filteredResults
         notifyDataSetChanged()
     }
