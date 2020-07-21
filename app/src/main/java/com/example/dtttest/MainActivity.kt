@@ -9,6 +9,10 @@ import androidx.core.os.postDelayed
 import java.util.*
 
 
+/**
+ * Main activity of the app. Displays a splash screen for the user for 1.5 seconds, then
+ * takes the to the HousesScreen to view the houses and the rest of actions
+ */
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,9 +23,8 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         setContentView(R.layout.activity_main)
-        val delay : Long = 2000
         val intent = Intent(this, HousesScreen::class.java)
         Handler().postDelayed({
-            startActivity(intent) }, delay)
+            startActivity(intent) }, 1500)
     }
 }

@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-
+/**
+ * This class creates the fragment displaying information about the app's developers
+ */
 class AboutFragment : Fragment() {
 
 

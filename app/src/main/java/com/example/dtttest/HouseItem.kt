@@ -4,6 +4,9 @@ package com.example.dtttest
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
+/**
+ * A data class holding the data about a HouseItem
+ */
 data class HouseItem(
     @SerializedName("bathrooms")
     val bathrooms: Int,

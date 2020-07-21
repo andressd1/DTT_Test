@@ -7,14 +7,28 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.roundToInt
 
-class RecycleFragViewModel : ViewModel() {
+/**
+ * ViewModel for ScrollingFragment
+ */
+class ScrollingFragViewModel : ViewModel() {
 
+    // Retrofit Instance using the HousesService class
     val retService = RetrofitInstance.getRetrofitInstance().create(HousesService::class.java)
+
+    // List of houses
     var houseData = ArrayList<HouseItem>()
+
+    // If location has been retrieved
     var gotLocation: Boolean = false
+
+    // User's latitude
     var latitude: Double = 0.0
+
+    // User's longitude
     var longitude: Double = 0.0
 
+    // Value holding live data which is the response to te method getHouses of retService
+    // Also manipulates the data
     val responseLiveData: LiveData<Response<House>> = liveData {
         val response = retService.getHouses()
         if (response.body() != null) {
@@ -24,7 +38,7 @@ class RecycleFragViewModel : ViewModel() {
                     houseData.add(listIter.next())
                 }
                 houseData.sortWith(compareBy { it.price })
-                if(gotLocation){
+                if (gotLocation) {
                     setDistance()
                 }
             }
@@ -32,6 +46,9 @@ class RecycleFragViewModel : ViewModel() {
         emit(response)
     }
 
+    /**
+     * Filters the houses based on a search
+     */
     fun filterHouses(search: String): ArrayList<HouseItem> {
 
         if (search.isEmpty()) {
@@ -50,15 +67,23 @@ class RecycleFragViewModel : ViewModel() {
         }
     }
 
+    /**
+     * Sets user location and updates the distance to the houses if possible
+     * @param lo Longitude of user
+     * @param la Latitude of user
+     */
     fun updateLocation(lo: Double, la: Double) {
         gotLocation = true
         latitude = la
         longitude = lo
-        if(houseData.size>0){
+        if (houseData.size > 0) {
             setDistance()
         }
     }
 
+    /**
+     * Sets the user's distance to the houses
+     */
     fun setDistance() {
         for (x in 0 until houseData.size) {
             val f = floatArrayOf(1f)

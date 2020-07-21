@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
+/**
+ * Fragment displaying an image and message when the search has no results
+ */
 class NoResultFragment : Fragment() {
 
 

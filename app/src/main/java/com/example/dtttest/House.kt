@@ -1,6 +1,7 @@
 package com.example.dtttest
 
 
-import com.google.gson.annotations.SerializedName
-
+/**
+ *Class for an arrayList<> of HouseItems
+ */
 class House : ArrayList<HouseItem>()
