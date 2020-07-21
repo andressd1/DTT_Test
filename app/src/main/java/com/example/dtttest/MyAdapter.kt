@@ -5,8 +5,10 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.row.view.*
 import kotlin.collections.ArrayList
 
@@ -21,9 +23,10 @@ class MyAdapter( arrayList: ArrayList<HouseItem>) :
 
 
      class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-
+         val base_url = "https://intern.docker-dev.d-tt.nl"
 
          fun bindItem(item: HouseItem) {
+             loadImage(itemView.houseImageIv, item.image)
              itemView.houseImageIv.clipToOutline = true
              itemView.priceTv.text = "$"+item.price
              itemView.addressTv.text = item.city + " " + item.zip
@@ -31,6 +34,10 @@ class MyAdapter( arrayList: ArrayList<HouseItem>) :
              itemView.bathsTv.text = item.bathrooms.toString()
              itemView.imageNumbTv.text = item.size.toString()
              itemView.distanceTv.text = "${item.distance} km"
+         }
+
+         fun loadImage(imageView: ImageView, url : String){
+             Glide.with(itemView).load(base_url+url).into(imageView)
          }
      }
 

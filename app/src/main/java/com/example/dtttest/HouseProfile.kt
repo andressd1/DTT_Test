@@ -5,8 +5,10 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -18,8 +20,9 @@ import kotlinx.android.synthetic.main.activity_house_profile.*
 
 class HouseProfile : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var map: GoogleMap
-    var longtitude :  Double = 0.0
-    var latitude : Double = 0.0
+    var longtitude: Double = 0.0
+    var latitude: Double = 0.0
+    val base_url = "https://intern.docker-dev.d-tt.nl"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +34,7 @@ class HouseProfile : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
-
+        loadImage(houseProfileImage, item.image)
         priceProfile.text = "$" + item.price.toString()
         bedsTv.text = item.bedrooms.toString()
         bathsTv.text = item.bathrooms.toString()
@@ -39,6 +42,11 @@ class HouseProfile : AppCompatActivity(), OnMapReadyCallback {
         distanceTv.text = "${item.distance} km"
         longtitude = item.longitude.toDouble()
         latitude = item.latitude.toDouble()
+        descriptioTv.text = item.description
+    }
+
+    fun loadImage(imageView : ImageView, url : String){
+        Glide.with(this).load(base_url+url).into(imageView)
     }
 
     fun onClickButton(view: View) {

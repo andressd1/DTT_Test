@@ -5,9 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -187,11 +185,11 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/descriptioTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10sp"
-                android:text="This is a house \n and many people like it \n cus its
-                a cool house \n and so people should buy it cheers"
+                android:text=""
                 android:textColor="@color/Medium"
                 android:textSize="15sp"
                 android:textStyle="normal" />

@@ -1,18 +1,13 @@
 package com.example.dtttest
 
 import android.location.Location
-import android.util.Log
 import androidx.lifecycle.*
 import retrofit2.Response
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.roundToInt
 
-class RecycleFragViewModel() : ViewModel() {
-
-    init {
-        Log.d("HERE", "lols")
-    }
+class RecycleFragViewModel : ViewModel() {
 
     val retService = RetrofitInstance.getRetrofitInstance().create(HousesService::class.java)
     var houseData = ArrayList<HouseItem>()
