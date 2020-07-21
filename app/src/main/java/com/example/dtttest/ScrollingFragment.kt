@@ -42,17 +42,21 @@ class ScrollingFragment : Fragment() {
         val fragment1: Fragment = RecycleFragment(viewModel.houseData)
         recycleFragment = fragment1 as RecycleFragment
         val fragment2: Fragment = NoResultFragment()
+
         val childFragmentManager: FragmentManager = childFragmentManager
         childFragmentManager.beginTransaction().add(R.id.search_container, fragment2, "2")
             .hide(fragment2).commit()
         childFragmentManager.beginTransaction().add(R.id.search_container, fragment1, "1").commit()
+
         // Once the ViewModel's data is modified, notifies the recycler fragment to update itself
         viewModel.responseLiveData.observe(viewLifecycleOwner) {
             recycleFragment.gotHouses()
         }
 
         /**
-         * Sets up the SearchView's actions
+         * Sets up the SearchView's actions. Gets the query, retrieves a filteredList from the viewModel
+         * If the filteredList has no results then display the no results fragment otherwise display and
+         * update the recyclerView fragment
          */
         val obj = object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {

@@ -34,14 +34,14 @@
 
         <activity
             android:name=".HouseProfile"
-            android:parentActivityName=".HousesScreen"
+            android:parentActivityName=".HomeScreen"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".HousesScreen"
+            android:name=".HomeScreen"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity

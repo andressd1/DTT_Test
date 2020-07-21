@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="@color/lightGray"
     android:orientation="vertical"
-    tools:context=".HousesScreen">
+    tools:context=".HomeScreen">
 
 
     <androidx.appcompat.widget.Toolbar

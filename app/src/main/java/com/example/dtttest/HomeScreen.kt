@@ -13,13 +13,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
-import kotlinx.android.synthetic.main.activity_houses_screen.*
+import kotlinx.android.synthetic.main.activity_home_screen.*
 
 /**
  * Class containing the fragments for the house recycle view and about fragment
  * Also checks for location permission from the user
  */
-class HousesScreen : AppCompatActivity() {
+class HomeScreen : AppCompatActivity() {
     // Whether the user has granted location permission or not
     var permissionDenied = false
     // Whether the user's location has been retrieved
@@ -35,13 +35,13 @@ class HousesScreen : AppCompatActivity() {
      */
     fun requestPermission(fragment: ScrollingFragment) {
         if (ContextCompat.checkSelfPermission(
-                this@HousesScreen,
+                this@HomeScreen,
                 Manifest.permission.ACCESS_FINE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
 
             ActivityCompat.requestPermissions(
-                this@HousesScreen,
+                this@HomeScreen,
                 arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                 1
             )
@@ -100,7 +100,7 @@ class HousesScreen : AppCompatActivity() {
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_houses_screen)
+        setContentView(R.layout.activity_home_screen)
 
         val myColor = ContextCompat.getColor(this, R.color.Strong)
         toolbar.title = "DTT REAL ESTATE"
