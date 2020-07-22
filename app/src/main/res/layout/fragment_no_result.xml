@@ -15,7 +15,8 @@
         android:layout_marginTop="30sp"
         android:adjustViewBounds="true"
         android:scaleType="centerInside"
-        android:src="@drawable/search_state_empty" />
+        android:src="@drawable/search_state_empty"
+        android:contentDescription="@string/No_Results_Image_Descr" />
 
     <TextView
         android:id="@+id/textNotFound"

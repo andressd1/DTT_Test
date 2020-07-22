@@ -3,7 +3,6 @@ package com.example.dtttest
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -58,7 +57,7 @@ class HouseProfile : AppCompatActivity(), OnMapReadyCallback {
         priceProfile.text = priceString
         bedsTv.text = houseItem.bedrooms.toString()
         bathsTv.text = houseItem.bathrooms.toString()
-        imageNumbTv.text = houseItem.size.toString()
+        sizeTv.text = houseItem.size.toString()
         distanceTv.text = distanceString
         longitude = houseItem.longitude.toDouble()
         latitude = houseItem.latitude.toDouble()

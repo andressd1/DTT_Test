@@ -26,7 +26,8 @@
             android:layout_height="70sp"
             android:background="@drawable/round_outline"
             android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/ic_launcher"
+            android:contentDescription="@string/House_Image_Descr" />
 
         <!--        Price of house-->
 
@@ -35,9 +36,9 @@
             android:layout_width="wrap_content"
 
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="10dp"
-            android:layout_toRightOf="@+id/houseImageIv"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toEndOf="@+id/houseImageIv"
             android:text=""
             android:textColor="@color/Strong"
             android:textSize="18sp"
@@ -53,10 +54,10 @@
 
             android:layout_height="wrap_content"
             android:layout_below="@+id/priceTv"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_toRightOf="@+id/houseImageIv"
+            android:layout_toEndOf="@+id/houseImageIv"
             android:text=""
             android:textColor="@color/Medium"
             android:textSize="13sp"
@@ -69,10 +70,10 @@
             android:layout_width="16sp"
             android:layout_height="16sp"
             android:layout_below="@+id/addressTv"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="1sp"
-            android:layout_marginRight="3dp"
-            android:layout_toRightOf="@+id/houseImageIv"
+            android:layout_marginEnd="3dp"
+            android:layout_toEndOf="@+id/houseImageIv"
             android:src="@drawable/ic_bed" />
 
         <TextView
@@ -80,9 +81,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/addressTv"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="3dp"
-            android:layout_toRightOf="@+id/bedsIconIv"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="3dp"
+            android:layout_toEndOf="@+id/bedsIconIv"
             android:text=""
             android:textColor="@color/Medium"
             android:textSize="11sp"
@@ -96,10 +97,10 @@
             android:layout_width="16sp"
             android:layout_height="16sp"
             android:layout_below="@+id/addressTv"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="1sp"
-            android:layout_marginRight="3dp"
-            android:layout_toRightOf="@+id/bedsTv"
+            android:layout_marginEnd="3dp"
+            android:layout_toEndOf="@+id/bedsTv"
             android:src="@drawable/ic_bath" />
 
         <TextView
@@ -108,9 +109,9 @@
 
             android:layout_height="wrap_content"
             android:layout_below="@+id/addressTv"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="3dp"
-            android:layout_toRightOf="@+id/bathsIconIv"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="3dp"
+            android:layout_toEndOf="@+id/bathsIconIv"
             android:text=""
             android:textColor="@color/Medium"
             android:textSize="11sp"
@@ -125,21 +126,21 @@
             android:layout_width="16sp"
             android:layout_height="16sp"
             android:layout_below="@+id/addressTv"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="1sp"
-            android:layout_marginRight="5dp"
-            android:layout_toRightOf="@+id/bathsTv"
+            android:layout_marginEnd="5dp"
+            android:layout_toEndOf="@+id/bathsTv"
             android:src="@drawable/ic_layers" />
 
         <TextView
-            android:id="@+id/imageNumbTv"
+            android:id="@+id/sizeTv"
             android:layout_width="wrap_content"
 
             android:layout_height="wrap_content"
             android:layout_below="@+id/addressTv"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="3dp"
-            android:layout_toRightOf="@+id/imageIconIv"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="3dp"
+            android:layout_toEndOf="@+id/imageIconIv"
             android:text=""
             android:textColor="@color/Medium"
             android:textSize="11sp"
@@ -154,10 +155,10 @@
             android:layout_width="16sp"
             android:layout_height="16sp"
             android:layout_below="@+id/addressTv"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="1sp"
-            android:layout_marginRight="5dp"
-            android:layout_toRightOf="@+id/imageNumbTv"
+            android:layout_marginEnd="5dp"
+            android:layout_toEndOf="@+id/sizeTv"
             android:src="@drawable/ic_location" />
 
         <TextView
@@ -166,9 +167,9 @@
 
             android:layout_height="wrap_content"
             android:layout_below="@+id/addressTv"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="3dp"
-            android:layout_toRightOf="@+id/distanceIconIv"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="3dp"
+            android:layout_toEndOf="@+id/distanceIconIv"
             android:text=""
             android:textColor="@color/Medium"
             android:textSize="11sp"

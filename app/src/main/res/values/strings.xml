@@ -8,4 +8,15 @@
     <string name="description">Description</string>
     <string name="location">Location</string>
     <string name="no_results_found_try_something_else">No results found! Try something else.</string>
+    <string name="d_tt_nl">d-tt.nl</string>
+    <string name="by_dtt">by_DTT</string>
+    <string name="D_and_D">Design and Development</string>
+    <string name="About_App">This app was developed by Andres Sanz, a Computer Science with Business student
+        at the University of Bath applying to the Android Development internship at DTT. This app is meant
+        as a simple implementation of viewing houses to potentially buy/rent.\n\nUsers can look at the various
+        houses from the Internet and open each one\'s profile to further analyze.</string>
+    <string name="logo_of_dtt">Logo of DTT</string>
+    <string name="House_Image_Descr">Image of the house</string>
+    <string name="No_Results_Image_Descr">Image of search having no results</string>
+    <string name="back_button">Back Button</string>
 </resources>

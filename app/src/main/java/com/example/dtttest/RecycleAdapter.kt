@@ -49,7 +49,7 @@ class RecycleAdapter(arrayList: ArrayList<HouseItem>) :
              itemView.addressTv.text = addressString
              itemView.bedsTv.text = item.bedrooms.toString()
              itemView.bathsTv.text = item.bathrooms.toString()
-             itemView.imageNumbTv.text = item.size.toString()
+             itemView.sizeTv.text = item.size.toString()
              itemView.distanceTv.text = distanceString
          }
 
