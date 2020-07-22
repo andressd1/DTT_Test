@@ -15,8 +15,8 @@ import kotlin.collections.ArrayList
 /**
  * Adapter for the Recycler View of houses
  */
-class MyAdapter( arrayList: ArrayList<HouseItem>) :
-    RecyclerView.Adapter<MyAdapter.ViewHolder>() {
+class RecycleAdapter(arrayList: ArrayList<HouseItem>) :
+    RecyclerView.Adapter<RecycleAdapter.ViewHolder>() {
 
     // List of houses that have been filtered
     var filteredList = ArrayList<HouseItem>()
@@ -38,15 +38,19 @@ class MyAdapter( arrayList: ArrayList<HouseItem>) :
          * Binds the data from the HouseItem to the UI components of the View of the ViewHolder
          * @param item HouseItem with data to bind to UI components
          */
-         fun bindItem(item: HouseItem) {
+         fun bindItem(item: HouseItem, context: Context) {
+             val priceString = context.getString(R.string.price_string, item.price)
+             val distanceString = context.getString(R.string.distance_string, item.distance)
+             val addressString = context.getString(R.string.address_string, item.city, item.zip)
              loadImage(itemView.houseImageIv, item.image)
+
              itemView.houseImageIv.clipToOutline = true
-             itemView.priceTv.text = "$"+item.price
-             itemView.addressTv.text = item.city + " " + item.zip
+             itemView.priceTv.text = priceString
+             itemView.addressTv.text = addressString
              itemView.bedsTv.text = item.bedrooms.toString()
              itemView.bathsTv.text = item.bathrooms.toString()
              itemView.imageNumbTv.text = item.size.toString()
-             itemView.distanceTv.text = "${item.distance} km"
+             itemView.distanceTv.text = distanceString
          }
 
         /**
@@ -83,7 +87,7 @@ class MyAdapter( arrayList: ArrayList<HouseItem>) :
      * @param position Index in filteredList to bind to ViewHolder
      */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindItem(filteredList[position])
+        holder.bindItem(filteredList[position], context)
 
         holder.itemView.setOnClickListener {
             val EXTRA_MESSAGE = "houseItem"

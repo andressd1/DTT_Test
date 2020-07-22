@@ -3,4 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>
+    <string name="price_string">$%d</string>
+    <string name="distance_string">%.2f km</string>
+    <string name="address_string">%s %s</string>
 </resources>

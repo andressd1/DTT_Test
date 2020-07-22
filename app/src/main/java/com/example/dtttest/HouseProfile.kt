@@ -3,6 +3,7 @@ package com.example.dtttest
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -21,9 +22,11 @@ import kotlinx.android.synthetic.main.activity_house_profile.*
 class HouseProfile : AppCompatActivity(), OnMapReadyCallback {
     // variable containing the google map for the activity
     private lateinit var map: GoogleMap
-    // variables containing the latitude and longitude of the house for use once the map is ready
+
+    // variables for the latitude and longitude of the house for use once the map is ready
     private var longitude: Double = 0.0
     private var latitude: Double = 0.0
+
     // the base url of the DTT house API
     private val baseUrl = "https://intern.docker-dev.d-tt.nl"
 
@@ -40,20 +43,23 @@ class HouseProfile : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
-        
+
     }
 
     /**
      * Sets up the different UI components with the houseItem data
      * @param houseItem Contains the data of the house
      */
-    fun setUpProfile(houseItem: HouseItem){
+    fun setUpProfile(houseItem: HouseItem) {
+        val priceString = getString(R.string.price_string, houseItem.price)
+        val distanceString = getString(R.string.distance_string, houseItem.distance)
         loadImage(houseProfileImage, houseItem.image)
-        priceProfile.text = "$" + houseItem.price.toString()
+
+        priceProfile.text = priceString
         bedsTv.text = houseItem.bedrooms.toString()
         bathsTv.text = houseItem.bathrooms.toString()
         imageNumbTv.text = houseItem.size.toString()
-        distanceTv.text = "${houseItem.distance} km"
+        distanceTv.text = distanceString
         longitude = houseItem.longitude.toDouble()
         latitude = houseItem.latitude.toDouble()
         descriptioTv.text = houseItem.description
@@ -64,8 +70,8 @@ class HouseProfile : AppCompatActivity(), OnMapReadyCallback {
      * @param imageView The ImageView to load the image into
      * @param url End of the url to retrieve the image from
      */
-    fun loadImage(imageView : ImageView, url : String){
-        Glide.with(this).load(baseUrl+url).into(imageView)
+    fun loadImage(imageView: ImageView, url: String) {
+        Glide.with(this).load(baseUrl + url).into(imageView)
     }
 
     /**

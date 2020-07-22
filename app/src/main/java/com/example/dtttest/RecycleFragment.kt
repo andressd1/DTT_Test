@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_recycle.*
  */
 class RecycleFragment(val houseList : ArrayList<HouseItem>) : Fragment() {
     // The adapter for recycleView
-    lateinit var myAdapter: MyAdapter
+    lateinit var recycleAdapter: RecycleAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,29 +29,29 @@ class RecycleFragment(val houseList : ArrayList<HouseItem>) : Fragment() {
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        myAdapter = MyAdapter(houseList)
+        recycleAdapter = RecycleAdapter(houseList)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = myAdapter
+        recyclerView.adapter = recycleAdapter
     }
 
     /**
      * Notifies the adapter of any necessary changes to the filteredList
      */
     fun searchChange(f : ArrayList<HouseItem>) {
-        myAdapter.filteredResults(f)
+        recycleAdapter.filteredResults(f)
     }
 
     /**
      * Notifies the adapter that user location has been retrieved and that data was modified
      */
     fun gotUserLocation() {
-        myAdapter.notifyDataSetChanged()
+        recycleAdapter.notifyDataSetChanged()
     }
 
     /**
      * Notifies the adapter that the houses have been retrieved and that data was modified
      */
     fun gotHouses() {
-        myAdapter.notifyDataSetChanged()
+        recycleAdapter.notifyDataSetChanged()
     }
 }

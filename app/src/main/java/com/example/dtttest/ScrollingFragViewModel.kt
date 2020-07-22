@@ -1,6 +1,7 @@
 package com.example.dtttest
 
 import android.location.Location
+import android.util.Log
 import androidx.lifecycle.*
 import retrofit2.Response
 import java.util.*
@@ -29,7 +30,7 @@ class ScrollingFragViewModel : ViewModel() {
 
     // Value holding live data which is the response to te method getHouses of retService
     // Also manipulates the data
-    val responseLiveData: LiveData<Response<House>> = liveData {
+    val responseLiveData: LiveData<Response<Houses>> = liveData {
         val response = retService.getHouses()
         if (response.body() != null) {
             val listIter = response.body()?.listIterator()
@@ -94,7 +95,7 @@ class ScrollingFragViewModel : ViewModel() {
                 houseData[x].longitude.toDouble(),
                 f
             )
-            houseData[x].distance = (f[0]).roundToInt().toFloat() / 1000
+            houseData[x].distance = (f[0]) / 1000
         }
     }
 
