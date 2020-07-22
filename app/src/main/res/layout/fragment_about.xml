@@ -1,16 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".AboutFragment">
 
     <TextView
         android:id="@+id/aboutText"
-        android:textColor="@color/Strong"
-        android:background="@color/lightGray"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="TALK ABOUT APP STUFF"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:background="@color/lightGray"
+        android:text="TALK ABOUT APP STUFF"
+        android:textColor="@color/Strong" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/designTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/aboutText"
+        android:layout_marginVertical="15sp"
+        android:text="Design and Development"
+        android:textColor="@color/Strong"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/designTitle"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="50sp"
+            android:adjustViewBounds="true"
+            android:cropToPadding="false"
+            android:src="@mipmap/dtt_banner" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="10sp">
+
+            <TextView
+                android:id="@+id/byText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5sp"
+                android:text="by DTT"
+                android:textColor="@color/Medium"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/webText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/byText"
+                android:layout_marginHorizontal="5sp"
+                android:text="d-tt.nl"
+                android:textColor="#03A9F4"
+                android:textSize="12sp" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

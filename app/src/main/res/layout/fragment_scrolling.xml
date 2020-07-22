@@ -1,42 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragContainer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ScrollingFragment">
 
-    <LinearLayout
-        android:id="@+id/fragContainer"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/houseSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/houseSearch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20sp"
-            android:layout_marginBottom="10sp"
-            android:background="@drawable/round_outline"
-            android:backgroundTint="@color/Light"
-            android:theme="@style/SearchViewStyle"
-            app:iconifiedByDefault="true"
-            app:queryBackground="@null"
-            app:defaultQueryHint="Search here"
-            app:queryHint="Search here"
-            app:closeIcon="@drawable/ic_close"/>
+        android:layout_marginBottom="5sp"
+        android:background="@drawable/round_outline"
+        android:backgroundTint="@color/Light"
+        android:theme="@style/SearchViewStyle"
+        app:closeIcon="@drawable/ic_close"
+        app:defaultQueryHint="Search here"
+        app:iconifiedByDefault="true"
+        app:queryBackground="@null"
+        app:queryHint="Search here" />
 
 
-        <include
-            layout="@layout/content_search"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+    <include
+        layout="@layout/content_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
-
-    </LinearLayout>
-
-
-</FrameLayout>
+</LinearLayout>

@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">DTT Test</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>
     <string name="price_string">$%d</string>
     <string name="distance_string">%.2f km</string>
     <string name="address_string">%s %s</string>
+    <string name="description">Description</string>
+    <string name="location">Location</string>
+    <string name="no_results_found_try_something_else">No results found! Try something else.</string>
 </resources>

@@ -2,16 +2,13 @@
 <androidx.cardview.widget.CardView
 
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/tools"
-    app:cardCornerRadius="10sp"
-    android:layout_marginStart="20sp"
-    android:layout_marginEnd="20sp"
     android:layout_marginTop="9sp"
     android:layout_marginBottom="8sp"
     app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="10sp"
     app:cardElevation="5dp"
 
     >
@@ -21,17 +18,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="3sp"
         android:padding="10dp">
-<!--        android:onClick="cardClicked"-->
-
-
 
         <!--        BIG HOUSE IMAGE-->
         <ImageView
             android:id="@+id/houseImageIv"
-            android:background="@drawable/round_outline"
-            android:scaleType="centerCrop"
             android:layout_width="70sp"
             android:layout_height="70sp"
+            android:background="@drawable/round_outline"
+            android:scaleType="centerCrop"
             android:src="@mipmap/ic_launcher" />
 
         <!--        Price of house-->
@@ -63,12 +57,10 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:layout_toRightOf="@+id/houseImageIv"
-            android:text="1011KH Raamgrach"
+            android:text=""
             android:textColor="@color/Medium"
             android:textSize="13sp"
-            android:textStyle="normal"
-
-            />
+            android:textStyle="normal" />
 
         <!--        Beds icon + number-->
 
@@ -78,9 +70,9 @@
             android:layout_height="16sp"
             android:layout_below="@+id/addressTv"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="1sp"
             android:layout_marginRight="3dp"
             android:layout_toRightOf="@+id/houseImageIv"
-            android:layout_marginTop="1sp"
             android:src="@drawable/ic_bed" />
 
         <TextView
@@ -91,7 +83,7 @@
             android:layout_marginLeft="4dp"
             android:layout_marginRight="3dp"
             android:layout_toRightOf="@+id/bedsIconIv"
-            android:text="1"
+            android:text=""
             android:textColor="@color/Medium"
             android:textSize="11sp"
 
@@ -105,11 +97,10 @@
             android:layout_height="16sp"
             android:layout_below="@+id/addressTv"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="1sp"
             android:layout_marginRight="3dp"
             android:layout_toRightOf="@+id/bedsTv"
-            android:src="@drawable/ic_bath"
-            android:layout_marginTop="1sp"
-            />
+            android:src="@drawable/ic_bath" />
 
         <TextView
             android:id="@+id/bathsTv"
@@ -120,7 +111,7 @@
             android:layout_marginLeft="4dp"
             android:layout_marginRight="3dp"
             android:layout_toRightOf="@+id/bathsIconIv"
-            android:text="1"
+            android:text=""
             android:textColor="@color/Medium"
             android:textSize="11sp"
 
@@ -135,11 +126,10 @@
             android:layout_height="16sp"
             android:layout_below="@+id/addressTv"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="1sp"
             android:layout_marginRight="5dp"
             android:layout_toRightOf="@+id/bathsTv"
-            android:src="@drawable/ic_layers"
-            android:layout_marginTop="1sp"
-            />
+            android:src="@drawable/ic_layers" />
 
         <TextView
             android:id="@+id/imageNumbTv"
@@ -150,7 +140,7 @@
             android:layout_marginLeft="4dp"
             android:layout_marginRight="3dp"
             android:layout_toRightOf="@+id/imageIconIv"
-            android:text="46"
+            android:text=""
             android:textColor="@color/Medium"
             android:textSize="11sp"
 
@@ -165,11 +155,10 @@
             android:layout_height="16sp"
             android:layout_below="@+id/addressTv"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="1sp"
             android:layout_marginRight="5dp"
             android:layout_toRightOf="@+id/imageNumbTv"
-            android:src="@drawable/ic_location"
-            android:layout_marginTop="1sp"
-            />
+            android:src="@drawable/ic_location" />
 
         <TextView
             android:id="@+id/distanceTv"
@@ -180,7 +169,7 @@
             android:layout_marginLeft="4dp"
             android:layout_marginRight="3dp"
             android:layout_toRightOf="@+id/distanceIconIv"
-            android:text="54.6km"
+            android:text=""
             android:textColor="@color/Medium"
             android:textSize="11sp"
 
